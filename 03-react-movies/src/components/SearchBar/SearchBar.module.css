@@ -1,0 +1,62 @@
+.header {
+  position: fixed; /* 🟢 Фіксує хедер вгорі */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100; /* Щоб хедер був поверх усього */
+  padding: 20px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.link {
+  font-size: 16px;
+  font-weight: 500;
+  color: #0a66c2;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: #004182;
+  text-decoration: underline;
+}
+
+.form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+.input {
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 240px;
+}
+
+.button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #0a66c2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.button:hover {
+  background-color: #004182;
+}
