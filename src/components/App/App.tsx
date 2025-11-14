@@ -6,6 +6,7 @@ import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import MovieModal from "../MovieModal/MovieModal";
 import { type Movie } from "../../types/movie";
 import { fetchMovies } from "../../services/movieService";
+import { Toaster, toast } from "react-hot-toast";
 import styles from "./App.module.css";
 
 const App: React.FC = () => {
@@ -14,21 +15,20 @@ const App: React.FC = () => {
   const [error, setError] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
 
-  // Обробник пошуку
   const handleSearch = async (query: string) => {
     if (!query.trim()) {
-      alert("Please enter your search query.");
+      toast.error("Please enter your search query.");
       return;
     }
 
     setLoading(true);
     setError(false);
-    setMovies([]); // очищаємо попередні результати
+    setMovies([]);
 
     try {
       const results = await fetchMovies({ query });
       if (results.length === 0) {
-        alert("No movies found for your request.");
+        toast("No movies found for your request.");
       }
       setMovies(results);
     } catch (err) {
@@ -41,12 +41,24 @@ const App: React.FC = () => {
 
   return (
     <div className={styles.app}>
+      {/* Toaster для показу повідомлень */}
+      <Toaster position="top-right" reverseOrder={false} />
+
+      {/* Форма пошуку */}
       <SearchBar onSubmit={handleSearch} />
+
+      {/* Loader */}
       {loading && <Loader />}
+
+      {/* Повідомлення про помилку */}
       {error && <ErrorMessage />}
+
+      {/* Галерея фільмів */}
       {!loading && !error && movies.length > 0 && (
         <MovieGrid movies={movies} onSelect={setSelectedMovie} />
       )}
+
+      {/* Модальне вікно */}
       {selectedMovie && (
         <MovieModal
           movie={selectedMovie}

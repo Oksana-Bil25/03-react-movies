@@ -1,4 +1,3 @@
-// src/components/SearchBar/SearchBar.tsx
 import React from "react";
 import styles from "./SearchBar.module.css";
 
@@ -13,10 +12,13 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSubmit }) => {
     const query = (
       form.elements.namedItem("query") as HTMLInputElement
     ).value.trim();
+
     if (!query) {
-      alert("Please enter your search query.");
+      // валідацію ми робимо тут — але повідомлення повинно показувати App через toast,
+      // тому повертаємо просту індикацію (App також перевіряє порожній рядок)
       return;
     }
+
     onSubmit(query);
     form.reset();
   };

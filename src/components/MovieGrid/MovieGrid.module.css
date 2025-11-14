@@ -13,7 +13,7 @@
 }
 
 .card {
-  width: 240px; /* Фіксована ширина картки для симетрії */
+  width: 240px;
   position: relative;
   overflow: hidden;
   border-radius: 8px;

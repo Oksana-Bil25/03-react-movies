@@ -34,14 +34,16 @@ export const fetchMovies = async ({
     }
   );
 
-  return response.data.results;
+  // Безпечний доступ до результатів
+  return response.data?.results ?? [];
 };
 
 export const getFullImageUrl = (
-  path: string | null,
+  path: string | null | undefined,
   size: "w500" | "original" = "w500"
 ): string => {
   if (!path) {
+    // плейсхолдер — можна замінити на стильний локальний asset
     return "https://via.placeholder.com/500x750?text=No+Image";
   }
   return `https://image.tmdb.org/t/p/${size}${path}`;

@@ -1,5 +1,3 @@
-// src/components/MovieModal/MovieModal.tsx
-
 import React, { useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { type Movie } from "../../types/movie";
@@ -17,11 +15,10 @@ if (!modalRoot) {
 }
 
 const MovieModal: React.FC<MovieModalProps> = ({ movie, onClose }) => {
+  // Hooks завжди на верхньому рівні компонента
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        onClose();
-      }
+      if (e.key === "Escape") onClose();
     },
     [onClose]
   );
@@ -37,9 +34,7 @@ const MovieModal: React.FC<MovieModalProps> = ({ movie, onClose }) => {
   }, [handleKeyDown]);
 
   const handleBackdropClick = (evt: React.MouseEvent<HTMLDivElement>) => {
-    if (evt.target === evt.currentTarget) {
-      onClose();
-    }
+    if (evt.target === evt.currentTarget) onClose();
   };
 
   const backdropPath = getFullImageUrl(movie.backdrop_path, "original");
