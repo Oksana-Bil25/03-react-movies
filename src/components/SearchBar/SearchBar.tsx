@@ -20,19 +20,23 @@ const SearchBar: FC<SearchBarProps> = ({ onSubmit }) => {
 
   return (
     <header className={styles.header}>
-      <form action={handleSubmit} className={styles.form}>
-        <input
-          className={styles.input}
-          type="text"
-          name="search"
-          placeholder="Search movies..."
-          autoComplete="off"
-        />
+      <div className={styles.container}>
+        <span className={styles.brand}>Powered by TMDB</span>
 
-        <button className={styles.button} type="submit">
-          Search
-        </button>
-      </form>
+        <form action={handleSubmit} className={styles.form}>
+          <input
+            className={styles.input}
+            type="text"
+            name="search"
+            placeholder="Search movies..."
+            autoComplete="off"
+          />
+
+          <button className={styles.button} type="submit">
+            Search
+          </button>
+        </form>
+      </div>
     </header>
   );
 };

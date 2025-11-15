@@ -1,12 +1,8 @@
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 100; /* Щоб хедер був поверх усього */
   padding: 20px;
   background-color: #ffffff;
   border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 20px;
 }
 
 .container {
@@ -54,7 +50,6 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
 }
 
 .button:hover {
