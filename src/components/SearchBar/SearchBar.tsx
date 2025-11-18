@@ -8,7 +8,7 @@ export interface SearchBarProps {
 
 const SearchBar: FC<SearchBarProps> = ({ onSubmit }) => {
   const handleSubmit = (formData: FormData) => {
-    const query = (formData.get("search") as string).trim();
+    const query = (formData.get("query") as string).trim();
 
     if (!query) {
       toast.error("Please enter your search query.");
@@ -27,7 +27,7 @@ const SearchBar: FC<SearchBarProps> = ({ onSubmit }) => {
           <input
             className={styles.input}
             type="text"
-            name="search"
+            name="query"
             placeholder="Search movies..."
             autoComplete="off"
           />
